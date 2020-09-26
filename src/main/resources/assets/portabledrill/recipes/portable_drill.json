@@ -1,0 +1,38 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "fcf",
+        " s ",
+        " d "
+    ],
+    "key":
+    {
+        "f":
+        {
+            "item": "immersiveengineering:metal_decoration1",
+            "data": 0
+        },
+        "c":
+        {
+            "item": "immersiveengineering:connector",
+            "data": 0
+        },
+		"s":
+		{
+			"item": "immersiveengineering:wooden_decoration",
+            "data": 1
+		},
+		"d":
+		{
+			"item": "immersiveengineering:metal_device1",
+			"data": 7
+		}
+    },
+    "result":
+    {
+        "item": "portabledrill:portable_drill",
+        "count": 1,
+        "data": 0
+    }
+}

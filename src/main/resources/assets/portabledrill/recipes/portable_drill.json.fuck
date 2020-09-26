@@ -1,0 +1,38 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "fcf",
+        " s ",
+        " d "
+    ],
+    "key":
+    {
+        "f":
+        {
+            "item": "immersiveengineering:metal_decoration1",
+            "data": 0
+        },
+        "c":
+        {
+            "item": "immersiveengineering:metal_device0",
+            "data": 0
+        },
+		"s":
+		{
+			"type": "forge:ore_dict",
+			"ore": "scaffoldingSteel"
+		},
+		"d":
+		{
+			"item": "immersiveengineering:drillhead"
+			"data": 0
+		}
+    },
+    "result":
+    {
+        "item": "portabledrill:portable_drill",
+        "count": 1,
+        "data": 0
+    }
+}

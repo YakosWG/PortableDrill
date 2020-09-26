@@ -1,0 +1,16 @@
+[
+{
+  "modid": "portabledrill",
+  "name": "Portable Drill",
+  "description": "Adds a portable drill item for IE",
+  "version": "1.0",
+  "mcversion": "1.12.2",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Yako"],
+  "credits": "Resisbence for requesting this, BluSunrize and the IE team for making Immersive Engineering, Flaxbeard for making Immersive Petroleum",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
