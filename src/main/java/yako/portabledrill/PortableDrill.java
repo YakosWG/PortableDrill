@@ -20,7 +20,7 @@ import yako.portabledrill.proxy.CommonProxy;
 public class PortableDrill {
 	public static final String MODID = "portabledrill";
 	public static final String NAME = "Portable Drill";
-	public static final String VERSION = "1.0";
+	public static final String VERSION = "1.1";
 
 	public static Logger logger;
 	

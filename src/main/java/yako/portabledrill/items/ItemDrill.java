@@ -55,7 +55,7 @@ public class ItemDrill extends Item {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
 		if (worldIn.isRemote) {
-			// Server side only
+			// Run Calculations Server side only
 			return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
 		}
 
@@ -64,18 +64,23 @@ public class ItemDrill extends Item {
 		if (stack == null || stack.getItem() != ModItems.DRILL || !stack.hasCapability(CapabilityEnergy.ENERGY, null))
 			return new ActionResult<ItemStack>(EnumActionResult.FAIL, playerIn.getHeldItem(handIn));
 
-		int remaining = stack.getCapability(CapabilityEnergy.ENERGY, null).getEnergyStored() - Config.CONSUMPTION;
+		// Creative ignores power consumption
+		if (!playerIn.isCreative()) {
 
-		if (remaining < 0) {
+			int remaining = stack.getCapability(CapabilityEnergy.ENERGY, null).getEnergyStored() - Config.CONSUMPTION;
 
-			playerIn.sendMessage(new TextComponentString(TextFormatting.GOLD + "Not enough energy! You need at least "
-					+ TextFormatting.AQUA + Config.CONSUMPTION));
+			if (remaining < 0) {
 
-			return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
+				playerIn.sendMessage(new TextComponentString(TextFormatting.GOLD
+						+ "Not enough energy! You need at least " + TextFormatting.AQUA + Config.CONSUMPTION));
+
+				return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
+			}
+
+			// Consume Energy
+			stack.getCapability(CapabilityEnergy.ENERGY, null).receiveEnergy(-Config.CONSUMPTION, false);
+
 		}
-
-		// Consume Energy
-		stack.getCapability(CapabilityEnergy.ENERGY, null).receiveEnergy(-Config.CONSUMPTION, false);
 
 		// Mineral
 		MineralWorldInfo worldInfo = ExcavatorHandler.getMineralWorldInfo(worldIn, playerIn.chunkCoordX,
@@ -129,17 +134,17 @@ public class ItemDrill extends Item {
 
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 	}
-	
+
 	@Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
-		
-		if (tab.getTabLabel() == ImmersiveEngineering.MODID) {
-		
-		ItemStack it = new ItemStack(this);
-		((EnergyStorageDrill) it.getCapability(CapabilityEnergy.ENERGY, null)).setEnergy(Config.MAX_ENERGY);
 
-		items.add(it);
-		
+		if (tab.getTabLabel() == ImmersiveEngineering.MODID) {
+
+			ItemStack it = new ItemStack(this);
+			((EnergyStorageDrill) it.getCapability(CapabilityEnergy.ENERGY, null)).setEnergy(Config.MAX_ENERGY);
+
+			items.add(it);
+
 		}
 		super.getSubItems(tab, items);
 	}
