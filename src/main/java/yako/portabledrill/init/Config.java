@@ -10,6 +10,7 @@ public class Config {
 	public static int MAX_ENERGY;
 	public static int MAX_INSERT;
 	public static int CONSUMPTION;
+	public static boolean SAMPLE_MODE;
 
 	private final static String CATEGORY_DRILL = "Drill";
 
@@ -36,6 +37,7 @@ public class Config {
 				"Rate at which energy can be inserted into the item");
 		CONSUMPTION = cfg.getInt("CONSUMPTION", CATEGORY_DRILL, 500, 0, Integer.MAX_VALUE,
 				"Energy that will be consumed per scan");
+		SAMPLE_MODE = cfg.getBoolean("SAMPLE_MODE", CATEGORY_DRILL, false, "If set to true, the drill will output a sample instead of a chat message");
 
 	}
 
