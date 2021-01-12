@@ -11,7 +11,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
 
-version = "1.2"
+version = "1.2.1"
 group = "yako.portabledrill" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "portabledrill"
 
@@ -49,11 +49,16 @@ repositories {
     name = "ModMaven"
     url = "https://modmaven.k-4u.nl"
   }
+  maven {
+	name = "CurseMaven"
+    url = "https://www.cursemaven.com"
+    }
 }
 
 dependencies {
     
-  deobfCompile "blusunrize:ImmersiveEngineering:0.12-92-559"
+  //deobfCompile "blusunrize:ImmersiveEngineering:0.12-98"
+  deobfCompile "curse.maven:immersive-engineering-231951:2974106"
   compile files("libs/")
   
   deobfProvided "mezz.jei:jei_1.12.2:4.15.0.296:api"

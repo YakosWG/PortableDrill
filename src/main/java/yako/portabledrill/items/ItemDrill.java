@@ -159,6 +159,7 @@ public class ItemDrill extends Item {
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
 
 		if (tab.getTabLabel() == ImmersiveEngineering.MODID) {
